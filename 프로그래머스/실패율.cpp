@@ -30,12 +30,6 @@ vector<int> solution(int N, vector<int> stages) {
         int break_p = 0;
         //스테이지 깬 플레이어. 유저의 수>=N 인 것들.
         
-        if(break_p == 0) {
-            stg.push_back(make_pair(i, 0));
-            continue;
-        }
-        //이것만 넣으면 될 줄 알았는데 아직도 안됨. 투비컨티뉴,........
-        
         for(int j=0; j<stages.size(); j++){
             if(i==stages[j]){
                 num++;
@@ -44,6 +38,13 @@ vector<int> solution(int N, vector<int> stages) {
                 break_p++;
             }
         }
+        
+        if(break_p == 0) {
+            stg.push_back(make_pair(i, 0));
+            continue;
+        }
+        //자리가 중요하다. for문 안에서 위에 차지하면 break_p가 0인 상태에서 시작하기 때문에 무조건 조건에 부합할 수 밖에 없음.
+        
         double failrate = 0;
         failrate = (double)num/break_p;
         stg.push_back(make_pair(i,failrate));
@@ -64,4 +65,3 @@ vector<int> solution(int N, vector<int> stages) {
 
 //비교함수 밑부분도 stg.second(a) > stg.second(b);가 아닌
 //a.second > b.second 식으로 표현해야한다.
-//왜 이렇게 했지....
