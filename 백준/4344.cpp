@@ -12,7 +12,6 @@ int main(){
         float average = 0;
         int sum = 0;
         int count = 0;
-        float percentage = 0;
         
         cin >> N;
         int score[N];
@@ -30,9 +29,8 @@ int main(){
             }
         }
         
-        percentage = (double)(count/N)*100;
         cout.precision(3);
-        cout << percentage << "%" << endl;
+        cout << fixed << (double)count/N*100 << "%" << endl;
     }
     
     return 0;
