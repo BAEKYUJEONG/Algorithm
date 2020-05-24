@@ -3,34 +3,32 @@
 
 using namespace std;
 
-int main()
-{
-    int N, M, temp;
-    int result = 0;
-    vector <int> A;
+int main(){
+  int N, M, temp;
+  int sum = 0;
+  int close = 0;
+  vector <int> card;
 
-    cin >> N >> M;
-    
-    for(int i=0; i<N; i++){
-        cin >> temp;
-        A.push_back(temp);
-    }
-    
-    for (int i = 0; i < N-2; i++)
-    {
-        for (int j = i + 1; j < N-1; j++)
-        {
-            for (int k = j + 1; k < N; k++)
-            {
-                if (A[i] + A[j] + A[k] <= M && A[i] + A[j] + A[k] > result)
-                {
-                    result = A[i] + A[j] + A[k];
-                }
-            }
+  cin >> N >> M;
+
+  for(int i=0; i<N; i++){
+    cin >> temp;
+    card.push_back(temp);
+  }
+
+  for(int i=0; i<N-2; i++){
+    for(int j=i+1; j<N-1; j++){
+      for(int k=j+1; k<N; k++){
+        sum = card[i]+card[j]+card[k];
+
+        if(sum<=M && sum>close){
+          close = sum;
         }
+      }
     }
-    
-    cout << result << endl;
-    
-    return 0;
+  }
+
+  cout << close << endl;
+
+  return 0;
 }
