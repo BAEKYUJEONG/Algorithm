@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>구구단 출력</title>
+</head>
+<!-- test3.html(구구단출력) -->
+<body>
+  <h3>구구단 출력</h3>
+  <hr>
+  <script type="text/javascript">
+     document.write("<pre>");//문서내의 공백을 브라우저에 반영하는 기능
+     for(var i=1; i<10; i++){//기준:곱하는 수 2*1   3*1   4*1 .... 9*1
+        for(var dan=2; dan<10;  dan++){//단수
+        	document.write(dan+"*"+i+"="+(dan*i)+"\t");//2*1=2   또는 if() &nbsp;출력
+            //console.log() ==> 디버그 용도로 많이 사용
+        }
+         document.write("<br>");
+     }
+     document.write("</pre>");
+     
+     document.write("<hr color=red>");
+     document.write("<table cellpadding=5>");
+     
+     for(var i=1; i<10; i++){//테이블의 행을 표현
+         document.write("<tr>");
+    	 
+         for(var dan=2; dan<10;  dan++){//테이블의 열을 표현
+         	document.write("<td>"+ dan+"*"+i+"="+(dan*i)  + "</td>");             
+         }
+          document.write("</tr>");
+      }
+     document.write("</table>");
+     
+  </script>
+<br>
+<pre>
+     동해물과
+        백두산이  
+</pre>  
+  
+</body>
+</html>
+
+
+

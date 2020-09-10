@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>이미지바꾸기</title>
+  <script type="text/javascript">
+    //기능정의 --> 함수 function
+    function imageChange(){
+    	console.log("call imageChange");
+    	var myImg = document.getElementById("myImg");
+       //myImg = Element객체
+        console.log("myImg.src>>>"+myImg.src)
+        //"http://localhost:8080/day39/image/WON.JPG"
+        var idx = myImg.src.lastIndexOf("/");
+        var fileName = myImg.src.substring(idx+1);
+        console.log("fileName>>>"+fileName)
+        //if(myImg.src == "./image/WON.JPG"){
+        	
+        	
+        if(fileName == "WON.JPG"){
+        	myImg.src = "./image/YOUNG.JPG"; 
+        }else if(fileName == "YOUNG.JPG"){
+        	myImg.src = "./image/WON.JPG"; 
+        }
+    }
+        
+    var flag=true
+    
+    function imageChange2(){
+    	        	
+        if(flag){
+        	myImg.src = "./image/YOUNG.JPG"; 
+        }else{
+        	myImg.src = "./image/WON.JPG"; 
+        }
+        flag=!flag;
+    }
+  </script>
+</head>
+<!-- test4.html -->
+<body>
+  <h3>이미지바꾸기</h3>
+  <hr>
+  <img alt="이미지" src="./image/WON.JPG" title="행복"
+       width="400" height="300"  id="myImg"  onclick="imageChange2()">
+</body>
+</html>
+
