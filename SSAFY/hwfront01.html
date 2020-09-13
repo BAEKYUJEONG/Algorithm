@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Become a Member</title>
+</head>
+<body>
+	<h1 align="center" style="color:orange; text-shadow: 6px 2px 2px black;">Become a Member</h1>
+	<hr style="border: solid 2px orange; width:700px;">
+	<form>
+		<fieldset style="width:600px; margin:0 auto;">
+			<legend style="color:green; font-weight:bold;">Registration Information</legend>
+			<table align="center">
+				<tr>
+					<td align="right"><label for="Email">E-mail: </label></td>
+					<td><input id="Email" type="text" style="border: solid 2px red; width:300px;" /></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="Password">Password: </label></td>
+					<td><input id="Password" type="password" style="border: solid 2px red; width:300px;" placeholder="At least 6 letters or numbers"/></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="Verify">Verify Password: </label></td>
+					<td><input id="Verify" type="password" style="border: solid 2px red; width:300px;" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<fieldset style="width:600px; margin:0 auto;">
+			<legend style="color:green; font-weight:bold;">Member Information</legend>
+			<table align="center">
+				<tr>
+					<td align="right"><label for="FirstName">First Name: </label></td>
+					<td><input id="FirstName" type="text" style="border: solid 2px red; width:300px;" /></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="LastName">Last Name: </label></td>
+					<td><input id="LastName" type="text" style="border: solid 2px red; width:300px;" /></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="Address">Address: </label></td>
+					<td><input id="Address" type="text" style="width:300px"; /></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="City">City: </label></td>
+					<td><input id="City" type="text" style="border: solid 2px red; width:300px;" /></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="State">State: </label></td>
+					<td><input id="State" type="text" placeholder="2-character code" style="border: solid 2px red; width:300px;" /></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="ZIPCode">ZIP Code: </label></td>
+					<td><input id="ZIPCode" type="text" placeholder="5 or 9 digits" style="border: solid 2px red; width:300px;" /></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="PhoneNumber">Phone Number: </label></td>
+					<td><input id="PhoneNumber" type="text" placeholder="999-999-9999" style="width:300px;" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<fieldset style="width:600px; margin:0 auto;">
+			<legend style="color:green; font-weight:bold;">Membership Information</legend>
+			<table align="center">
+				<tr>
+					<td align="right"><label for="MembershipType">Membership Type: </label></td>
+					<td>
+						<select style="width:300px;">
+							<option>Junior</option>
+							<option>Senior</option>
+							<option>Sophomore</option>
+							<option>Freshman</option>
+						</select>
+					</td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="StartingDate">Starting Date: </label></td>
+					<td><input id="StartingDate" type="date" style="border: solid 2px red; width:300px;" /></td>
+				</tr>
+				
+				<tr>
+					<td align="right"><label for="TicketsForGuests">Tickets For Guests: </label></td>
+					<td><input id="TicketsForGuests" type="number" value="2" style="width:300px;" /></td>
+				</tr>
+			</table>
+		</fieldset>
+		
+		<fieldset style="width:600px; margin:0 auto;">
+			<legend style="color:green; font-weight:bold;">Submit Your Membership</legend>
+			<input type="reset" value="Reset Fields" style="width:150px; float:right;"/>
+			<input type="submit" value="Submit" style="width:150px; float:right; margin-right:10px;"/>
+		</fieldset>
+		
+	</form>
+	
+	<hr style="border: solid 2px orange; width:700px;">
+	<div style="width:700px; margin:0 auto;"><p style="float:right;">ⓒ Copyright 2020 SSAFY4_Seoul_08.</p></div>
+</body>
+</html>
