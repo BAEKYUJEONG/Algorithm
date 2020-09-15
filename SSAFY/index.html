@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>SSAFY Cafe</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="shortcut icon" href="img/favicon.ico">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!-- 상단 contents start -->
+<nav class="navbar navbar-expand-sm bg-light fixed-top shadow">
+	<div class="container">
+		<a class="navbar-brand">SSAFY Cafe</a>
+		<button class="navbar-toggler navbar-toggler-right bg-secondary text-white" type="button" data-toggle="collapse" data-target="#navb">
+	    	<span class="navbar-toggler-icon">-</span>
+		</button>
+		<div id="navb" class="collapse navbar-collapse">
+			<ul class="navbar-nav mr-auto">
+				<li class="nav-item">
+					<a class="nav-link text-secondary" href="#">공지사항</a>
+				</li>
+			</ul>
+			<form class="form-inline my-2 my-lg-0">
+				<input class="form-control mr-sm-2" size="40%" type="text" placeholder="Search">
+				<button class="btn btn-secondary my-2 my-sm-0" type="button">검색</button>
+			</form>
+			<ul id="header_nav_confirmoff" class="navbar-nav justify-content-end">
+				<li class="nav-item">
+					<a class="nav-link text-secondary" href="#">로그인</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-secondary" href="#">회원가입</a>
+				</li>
+			</ul>
+			<ul id="header_nav_confirmon" class="navbar-nav justify-content-end"> <!-- style="display: none;"> -->
+				<li class="nav-item">
+					<a class="nav-link text-secondary" href="#">로그아웃</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link text-secondary" href="#">마이페이지</a>
+				</li>
+				<li class="nav-item dropdown">
+				    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#">관리자</a>
+				    <div class="dropdown-menu">
+					      <a class="dropdown-item" href="#voteModal" data-toggle="modal">투표만들기</a>
+					      <a class="dropdown-item" href="#">차트보기</a>
+					      <a class="dropdown-item" href="#">회원관리</a>
+				    </div>
+  				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+<!-- 상단 contents end -->
+
+<div class="container">
+	<div style="height: 60px;"></div>
+	<!-- 중앙 contents start -->
+	<div class="row">
+	
+		<!-- 중앙 left contents start -->
+		<div class="col-md-3">
+			<div class="profile m-2 text-center">
+				<img id="profile_img" class="rounded img-thumbnail" src="img/profile.png" alt="">
+			</div>
+			
+			<button class="btn btn-block btn-lg btn-primary mt-1" data-toggle="collapse" data-target="#seoul">서울</button>
+			<div id="seoul" class="collapse bg-secondary text-white mb-1 rounded-lg">
+				<div class="pl-4 pt-2 pb-2 mt-1">역삼점</div>
+				<div class="pl-4 pt-2 pb-2">선릉점</div>
+			</div>
+			<button class="btn btn-block btn-lg btn-primary mt-1" data-toggle="collapse" data-target="#daejeon">대전</button>
+			<div id="daejeon" class="collapse bg-secondary text-white mb-1 rounded-lg">
+				<div class="pl-4 pt-2 pb-2 mt-1">학하점</div>
+				<div class="pl-4 pt-2 pb-2">봉명점</div>
+			</div>
+			<button class="btn btn-block btn-lg btn-primary mt-1" data-toggle="collapse" data-target="#gumi">구미</button>
+			<div id="gumi" class="collapse bg-secondary text-white mb-1 rounded-lg">
+				<div class="pl-4 pt-2 pb-2 mt-1">인동점</div>
+				<div class="pl-4 pt-2 pb-2">공단점</div>
+			</div>
+			<button class="btn btn-block btn-lg btn-primary mt-1" data-toggle="collapse" data-target="#gwanju">광주</button>
+			<div id="gwanju" class="collapse bg-secondary text-white mb-1 rounded-lg">
+				<div class="pl-4 pt-2 pb-2 mt-1">하남산단점</div>
+				<div class="pl-4 pt-2 pb-2">광주역점</div>
+			</div>
+			
+			<div class="border border-secondary rounded-lg mt-2 p-3">
+				<div class="text-center text-secondary font-weight-bold">[ 당신의 선택 ]</div>
+				<div class="font-weight-bold">
+				최애 메뉴를 골라 주세요!!!
+				</div>
+				<div class="p-3">
+					<ul class="nav flex-column">
+						<li class="nav-item">
+							<label><input type="radio" name="vote_answer" value="카페라떼"/>
+							<img src="img/coffee/ice/ice_cafelatte.jpg" class="rounded" style="width:35px" alt=""/> 카페라떼</label>
+						</li>
+						<li class="nav-item">
+							<label><input type="radio" name="vote_answer" value="카페모카"/>
+							<img src="img/coffee/ice/ice_cafemocha.jpg" class="rounded" style="width:35px" alt=""/> 카페모카</label>
+						</li>
+						<li class="nav-item">
+							<label><input type="radio" name="vote_answer" value="카라멜마끼야또"/>
+							<img src="img/coffee/ice/ice_caramelmacchiato.jpg" class="rounded" style="width:35px" alt=""/> 카라멜마끼야또</label>
+						</li>
+						<li class="nav-item">
+							<label><input type="radio" name="vote_answer" value="바닐라라떼"/>
+							<img src="img/coffee/ice/ice_vanillalatte.jpg" class="rounded" style="width:35px" alt=""/> 바닐라라떼</label>
+						</li>
+					</ul>
+				</div>
+				<div class="text-center">
+					<button id="voteBtn" class="btn btn-outline-primary btn-sm">투표하기</button>
+					<button class="btn btn-outline-danger btn-sm">결과보기</button>
+				</div>
+				<div class="text-right text-secondary mt-1">
+				투표기간 : 20.09.01 ~ 20.09.30
+				</div>
+			</div>
+			
+		</div>
+		<!-- 중앙 left contents end -->
+		
+		<!-- 중앙 center contents start -->
+		<div class="col-md-9">
+			<div class="mt-2"><h5>[인기메뉴]</h5></div>
+			<div class="row mt-1">
+					<div class="col-md-3 border border-secondary rounded pt-2 pb-2">
+						<div class="mt-1">
+							<img src="img/coffee/ice/ice_americano.jpg" class="rounded w-100" alt=""/>
+						</div>
+						<div class="mt-1 p-1 text-center" style="background-color: #f2f2f2;"><h6>아이스 아메리카노<br/>(4500원)</h6></div>
+					</div>
+					<div class="col-md-3 border border-secondary rounded pt-2 pb-2">
+						<div class="mt-1">
+							<img src="img/coffee/ice/ice_capuccino.jpg" class="rounded w-100" alt=""/>
+						</div>
+						<div class="mt-1 p-1 text-center" style="background-color: #f2f2f2;"><h6>아이스 카푸치노<br/>(4500원)</h6></div>
+					</div>
+					<div class="col-md-3 border border-secondary rounded pt-2 pb-2">
+						<div class="mt-1">
+							<img src="img/coffee/ice/ice_vanillalatte.jpg" class="rounded w-100" alt=""/>
+						</div>
+						<div class="mt-1 p-1 text-center" style="background-color: #f2f2f2;"><h6>아이스 바닐라라떼<br/>(5500원)</h6></div>
+					</div>
+					<div class="col-md-3 border border-secondary rounded pt-2 pb-2">
+						<div class="mt-1">
+							<img src="img/coffee/ice/ice_whitechocolatemocha.jpg" class="rounded w-100" alt=""/>
+						</div>
+						<div class="mt-1 p-1 text-center" style="background-color: #f2f2f2;"><h6>아이스 화이트초코모카<br/>(6000원)</h6></div>
+					</div>
+			</div>
+			<div class="mt-3"><h5>[신메뉴]</h5></div>
+			<div class="row mt-1">
+					<div class="col-md-3 border border-secondary rounded pt-2 pb-2">
+						<div class="mt-1">
+							<img src="img/coffee/hot/cafelatte.jpg" class="rounded w-100" alt=""/>
+						</div>
+						<div class="mt-1 p-1 text-center" style="background-color: #f2f2f2;"><h6>카페라떼<br/>(4700원)</h6></div>
+					</div>
+					<div class="col-md-3 border border-secondary rounded pt-2 pb-2">
+						<div class="mt-1">
+							<img src="img/coffee/hot/esspresso.jpg" class="rounded w-100" alt=""/>
+						</div>
+						<div class="mt-1 p-1 text-center" style="background-color: #f2f2f2;"><h6>에스프레소<br/>(4500원)</h6></div>
+					</div>
+					<div class="col-md-3 border border-secondary rounded pt-2 pb-2">
+						<div class="mt-1">
+							<img src="img/coffee/hot/whitechocolatemocha.jpg" class="rounded w-100" alt=""/>
+						</div>
+						<div class="mt-1 p-1 text-center" style="background-color: #f2f2f2;"><h6>화이트초코모카<br/>(5500원)</h6></div>
+					</div>
+					<div class="col-md-3 border border-secondary rounded pt-2 pb-2">
+						<div class="mt-1">
+							<img src="img/coffee/hot/cafemocha.jpg" class="rounded w-100" alt=""/>
+						</div>
+						<div class="mt-1 p-1 text-center" style="background-color: #f2f2f2;"><h6>카페모카<br/>(4800원)</h6></div>
+					</div>
+			</div>
+			
+			<div class="row mt-3">
+				<div class="col-md-6">
+					<h5>[ 인기글 ]</h5>
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th class="title">제목</th>
+								<th>작성자</th>
+								<th>조회수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>깔끔한 아아가 제일 맛나요!!</td>
+								<td>이쎄림</td>
+								<td>1756</td>
+							</tr>
+							<tr>
+								<td>분위기 좋은 카페 추천~</td>
+								<td>홍정밍</td>
+								<td>998</td>
+							</tr>
+							<tr>
+								<td>공부하기 좋은 스터디카페 ^^</td>
+								<td>김나켠</td>
+								<td>856</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+				<div class="col-md-6">
+				<h5>[ 최신글 ]</h5>
+					<table class="table table-hover">
+						<thead class="thead-dark">
+							<tr>
+								<th class="title">제목</th>
+								<th>작성자</th>
+								<th>조회수</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>메뉴추천해주세요 ^^~</td>
+								<td>이주녕</td>
+								<td>12</td>
+							</tr>
+							<tr>
+								<td>오늘부터 열공</td>
+								<td>조밍기</td>
+								<td>998</td>
+							</tr>
+							<tr>
+								<td>와플도 팔았으면 좋겠어요.</td>
+								<td>류해면</td>
+								<td>856</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<!-- 중앙 center contents end -->
+		
+	</div>
+	<!-- 중앙 contents end -->
+	
+	<!-- 하단 contents start -->
+	<footer class="navbar navbar-expand-md justify-content-end">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="navbar-nav">
+					<li><a class="nav-link text-secondary" href="#">카페소개</a></li>
+					<li><a class="nav-link text-secondary" href="#">개인정보처리방침</a></li>
+					<li><a class="nav-link text-secondary" href="#">이용약관</a></li>
+					<li><a class="nav-link text-secondary" href="#">오시는길</a></li>
+					<li><label class="nav-link text-secondary">&copy; SSAFY Corp.</label></li>
+				</ul>
+			</div>
+		</div>
+	</footer>
+	<!-- 하단 contents end -->
+</div>
+<!-- 투표만들기 modal start -->
+<div id="voteModal" class="modal fade">
+	<div class="modal-dialog modal-dialog-centered">
+    	<div class="modal-content">
+    		<div class="modal-header">
+        		<h4 class="modal-title">투표 만들기</h4>
+        		<button type="button" class="close" data-dismiss="modal">&times;</button>
+      		</div>
+      		<div class="modal-body">
+			<form action="">
+				<div class="form-group">
+					<label>질문 내용</label>
+					<input type="text" id="question" name="question" class="form-control" placeholder="질문내용...">
+				</div>
+				<div class="form-group">
+					<label>답변 항목</label>
+					<button type="button" id="addAnswerBtn" class="btn btn-outline-danger btn-sm">추가</button>
+				</div>
+				<div id="form-group">
+					<div class="poll_answer_item">
+						<input type="text" name="answer" class="form-control">
+					</div>
+				</div>
+				<div class="form-group mt-2 text-right">
+					<button type="button" id="pollMakeBtn" class="btn btn-primary">투표 생성</button>
+				</div>
+			</form>
+			</div>
+			<div class="modal-footer">
+        		<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+      		</div>
+		</div>
+	</div>
+</div>
+<!-- 투표만들기 modal start -->
+</body>
+</html>
+
