@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport"
+	content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+<meta name="description" content="" />
+<meta name="author" content="" />
+<title>HappyHouse</title>
+<link rel="icon" type="image/x-icon" href="assets/img/favicon.ico" />
+<!-- Font Awesome icons (free version)-->
+<script src="https://use.fontawesome.com/releases/v5.13.0/js/all.js" crossorigin="anonymous"></script>
+<!-- Google fonts-->
+<link href="https://fonts.googleapis.com/css?family=Montserrat:400,700"	rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic" rel="stylesheet" type="text/css" />
+<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+<!-- Core theme CSS (includes Bootstrap)-->
+<link href="css/styles.css" rel="stylesheet" />
+<script type="text/javascript">
+	function check() {
+		var flag = false;
+		var id = document.getElementById("id").value;
+		var password = document.getElementById("password").value;
+	    $.ajax({
+	   		url:'userlist.xml'
+	    	,
+		    success:function(data){
+		       flag = true;
+		       $(data).find('user').each(function(){
+		    	   if($(this).find('id').text() == id && $(this).find('password').text() == password){
+		    		   alert('로그인 성공');
+		    		   flag = false;
+		    		   $('#log').attr("href", "#").attr("onclick","select()").text(id);
+		    		   $('#sign').attr("href", "#").attr("onclick","logout()").text("로그아웃");
+		    		   document.getElementById("password").value = "";
+		    		   document.getElementById("id").value = "";
+		    		   $('#loginModal').modal("hide");
+		    	   }
+		       });
+		       if(flag){
+		    	   alert("아이디와 비밀번호를 확인하세요");
+		       }
+		    }
+		});
+	}
+	function logout(){
+		$('#log').attr("href", "#loginModal").text("로그인");
+		$('#sign').attr("href","#SignInModal").text("회원가입");
+		return false;
+	}
+	
+	function select(){
+		var id = $('#log').text();
+		console.log(id);
+		 $.ajax({
+		   		url:'userlist.xml'
+		    	,
+			    success:function(data){
+			       flag = true;
+			       $(data).find('user').each(function(){
+			    	   if($(this).find('id').text() == id){
+			    		  $("#selId").attr('value',$(this).find('id').text());
+			    		  $("#selPassword").attr('value', $(this).find('password').text());
+			    		  $("#selName").attr('value', $(this).find('name').text());
+			    		  $("#selAddress").attr('value', $(this).find('address').text());		    	
+			    		  $("#selCellphone").attr('value', $(this).find('cellphone').text());
+			    	   }
+			       });
+
+			    }
+			});
+		 $('#log').attr("href", "#SelectModal");
+	}
+	
+	function change(){
+		 /*
+			$.ajax({
+		   		url:'userlist.xml'
+		    	,
+			    success:function(data){
+			    	if($(this).find('id').text() == id){
+			    	   console.log($("#newPassword").val());
+				       if($(this).find('password').text() != $("#newPassword").val())
+				    	   $(this).find('password').text($("#newPassword").val());
+				       if($(this).find('address').text() != $("#selAddress").val())
+				    	   $(this).find('adress').text($("#selAddress").val());
+				       if($(this).find('name').text() != $("#selName").val())
+				    	   $(this).find('name').text($("#selName").val());
+				       if($(this).find('cellphone').text() != $("#selCellphone").val())
+				    	   $(this).find('cellphone').text($("#selCellphone").val());  
+			    	}
+			    }
+			});
+		 */
+	}
+	
+	function insert() {
+		alert("아직 미구현....");
+		/*
+		var flag = false;
+		var id = $("#addId").val();
+		var password = $("#password").val();
+	    $.ajax({
+	    	type: "get",
+	   		url:'userlist.xml',
+			dataType: "xml",
+		    success:function(data){
+		       flag = false;
+		       $(data).find('user').each(function(){
+		    	   if($(this).find('id').text() == id){
+		    		   flag = true;
+		    	   }
+		       });
+		       if(flag){
+		    	   alert("이미 가입된 아이디입니다.");
+		       }
+		       else{
+		    	   var xmlId = "<user>" +
+		   							"<id>" + id + "</id>" +
+		   							"<password>" + $("#addPassword").val() +"</password>" +
+		   							"<name>" + $("#addName").val() + "</name>" +
+									"<address>" + $("#addAddress").val() + "</address>" +
+								    "<cellphone>" + $("#addCellphone").val() + "</cellphone>" +
+								  "</user>";
+				   $('this').find('users').append(xmlId);
+				   
+		       }
+		    }
+		});
+	    */
+	    alert("아직 미구현....");
+	}
+	
+</script>
+</head>
+<body id="page-top">
+	<!-- Navigation-->
+	<nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+		<div class="container">
+			<a class="navbar-brand js-scroll-trigger" href="#page-top">
+			<img src="assets/img/navbar-logo.svg" alt="" /></a>
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarResponsive"
+				aria-controls="navbarResponsive" aria-expanded="false"
+				aria-label="Toggle navigation">
+				Menu <i class="fas fa-bars ml-1"></i>
+			</button>
+			<div class="collapse navbar-collapse" id="navbarResponsive">
+				<ul class="navbar-nav ml-auto">
+					<li class="nav-item"><a class="nav-link" href="#">공지사항</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">오늘의 뉴스</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">주변 탐방</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">관심 지역 설정</a></li>
+					<li class="nav-item"><a class="nav-link" href="#">관심 지역 둘러보기</a></li>
+					<li class="nav-item"><a class="nav-link" id="log"  href="#loginModal" data-toggle="modal">로그인</a></li>
+					<li class="nav-item"><a class="nav-link" id="sign" href="#SignInModal" data-toggle="modal">회원가입</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	<header class="masthead">
+		<div class="container">
+			<div class="masthead-heading text-uppercase">Happy House</div>
+		</div>
+	</header>
+	<!-- Services-->
+	<section class="page-section" id="services">
+		<div class="container">
+			<div class="text-center">
+				<h2 class="section-heading text-uppercase">Services</h2>
+				<h3 class="section-subheading text-muted">Lorem ipsum dolor sit
+					amet consectetur.</h3>
+			</div>
+			<div class="row text-center">
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x"> <i
+						class="fas fa-circle fa-stack-2x text-primary"></i> <i
+						class="fas fa-shopping-cart fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="my-3">E-Commerce</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
+						adipisicing elit. Minima maxime quam architecto quo inventore
+						harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x"> <i
+						class="fas fa-circle fa-stack-2x text-primary"></i> <i
+						class="fas fa-laptop fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="my-3">Responsive Design</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
+						adipisicing elit. Minima maxime quam architecto quo inventore
+						harum ex magni, dicta impedit.</p>
+				</div>
+				<div class="col-md-4">
+					<span class="fa-stack fa-4x"> <i
+						class="fas fa-circle fa-stack-2x text-primary"></i> <i
+						class="fas fa-lock fa-stack-1x fa-inverse"></i>
+					</span>
+					<h4 class="my-3">Web Security</h4>
+					<p class="text-muted">Lorem ipsum dolor sit amet, consectetur
+						adipisicing elit. Minima maxime quam architecto quo inventore
+						harum ex magni, dicta impedit.</p>
+				</div>
+			</div>
+		</div>
+	</section>
+	
+	
+	<!-- 로그인 modal -->
+	<div id="loginModal" class="modal fade" style="height:50% width:50%">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">로그인</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form name="info">
+						<div class="form-group">
+							<label for="id">ID</label>
+							<input type="text" class="form-control" id="id" maxlength="20" placeholder="ID">
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="password" placeholder="Password">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="check()">Login</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- 회원가입 modal -->
+	<div id="SignInModal" class="modal fade">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">회원가입</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form  name="info">
+						<div class="form-group">
+							<label for="id">ID</label>
+							<input type="text" class="form-control" id="addId" maxlength="20" placeholder="ID">
+						</div>
+						<div class="form-group">
+							<label for="password">Password</label>
+							<input type="password" class="form-control" id="addPassword" placeholder="Password">
+						</div>
+						<div class="form-group">
+							<label for="id">이름</label>
+							<input type="text" class="form-control" id="addName" maxlength="20" placeholder="Name">
+						</div>
+						<div class="form-group">
+							<label for="id">주소</label>
+							<input type="text" class="form-control" id="addAddress" placeholder="Address">
+						</div>
+						<div class="form-group">
+							<label for="id">전화번호</label>
+							<input type="tel" class="form-control" id="addCellphone" pattern="(010)\d{8}" maxlength="20" placeholder="01000000000">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="insert()">등록</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	<!-- 회원정보 조회 modal -->
+	<div id="SelectModal" class="modal fade">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h4 class="modal-title">회원정보 조회</h4>
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+				</div>
+				<div class="modal-body">
+					<form name="info">
+						<div class="form-group">
+							<label for="id">ID</label>
+							<input type="text" class="form-control" id="selId" maxlength="20" placeholder="ID" readonly>
+						</div>
+						<div class="form-group">
+							<label for="password">Current Password</label>
+							<input type="text" class="form-control" id="selPassword" placeholder="Password" readonly>
+						</div>
+						<div class="form-group">
+							<label for="password">New Password</label>
+							<input type="password" class="form-control" id="newPassword" placeholder="Password">
+						</div>
+						<div class="form-group">
+							<label for="id">이름</label>
+							<input type="text" class="form-control" id="selName" maxlength="20" placeholder="Name">
+						</div>
+						<div class="form-group">
+							<label for="id">주소</label>
+							<input type="text" class="form-control" id="selAddress" placeholder="Address">
+						</div>
+						<div class="form-group">
+							<label for="id">전화번호</label>
+							<input type="tel" class="form-control" id="selCellphone" pattern="(010)\d{8}" maxlength="20" placeholder="01000000000">
+						</div>
+					</form>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-primary" onclick="change()">변경</button>
+					<button type="button" class="btn btn-danger" data-dismiss="modal">닫기</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Bootstrap core JS-->
+	<script	src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>		
+	<script	src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.bundle.min.js"></script>
+	<!-- Third party plugin JS-->
+	<script	src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+	<!-- Contact form JS-->
+	<script src="assets/mail/jqBootstrapValidation.js"></script>
+	<script src="assets/mail/contact_me.js"></script>
+	<!-- Core theme JS-->
+	<script src="js/scripts.js"></script>
+</body>
+</html>
