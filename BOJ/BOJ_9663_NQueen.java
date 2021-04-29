@@ -44,19 +44,13 @@ public class BOJ_9663_NQueen {
 	}
 
 	private static boolean isPossible(int row, int col) {
-		//같은 행에 있을 때
-		for(int i=0; i<col; i++) {
-			if(board[i]==board[col]) {
-				return false;
-			}
-		}
-		
-		//대각선에 있을 때
-		//i가 순서대로인 열, board[i]의 항목이 행
-		for(int i=0; i<col; i++) {
-			if(Math.abs(i-col)==Math.abs(board[i]-row)) {
-				return false;
-			}
+		for(int i=0; i<col; i++) {	
+			//같은 행에 있을 때
+			if(board[i]==row) return false;
+			
+			//대각선에 있을 때
+			//i가 순서대로인 열, board[i]의 항목이 행
+			if(Math.abs(col-i)==Math.abs(row-board[i])) return false;
 		}
 		
 		return true;
