@@ -1,6 +1,8 @@
+import java.util.ArrayList;
 
 public class programmers_소수찾기 {
-	static int answer = 0;
+    static int answer = 0;
+	static ArrayList<Integer> list = new ArrayList<>();
 	
 	public static int solution(String numbers) {
         String[] num = numbers.split("");
@@ -14,6 +16,7 @@ public class programmers_소수찾기 {
         return answer;
     }
 	
+	// 수 만들기
 	public static void permutation(String[] num, boolean[] visited, String[] output, int depth, int n, int length) {
 		if(depth == n) {
 			check(output);
@@ -30,12 +33,19 @@ public class programmers_소수찾기 {
 		}
 	}
 	
+	// 소수 찾기
 	public static void check(String[] output) {
 		boolean flag = false;
 		String s = "";
+		
+		// 앞에 0이 있다면 떼어주고 숫자 만들기
 		for(int i=0; i<output.length; i++) {
-			if(flag == true) s += output[i];
-			else if(output[i]!="0") flag = true;
+			if(flag == true) {
+				s += output[i];
+			}else if(!output[i].equals("0")) {
+				flag = true;
+				s += output[i];
+			}
 		}
 		
 		if(s=="") return;
@@ -44,19 +54,27 @@ public class programmers_소수찾기 {
 		
 		if(n==1) return;
 		
-		boolean[] visited = new boolean[n+1];
+		// 소수 판별
+        // 제곱근까지만 판별하기
+		for(int i=2; i<=Math.sqrt(n); i++){
+            if(n % i == 0) return;
+        }
 		
-		for(int i=2; i<=n; i++) {
-			for(int j=2; i*j<=n; j++) {
-				visited[i*j] = true;
-			}
+		boolean exit_flag = false;
+		
+		for(int i=0; i<list.size(); i++) {
+			if(list.get(i) == n) exit_flag = true;
 		}
 		
-		if(!visited[n]) answer++;
+		if(!exit_flag) { // 이미 나온 소수가 아니면
+			answer++;
+			list.add(n);
+		}
 	}
 
 	public static void main(String[] args) {
-		String numbers = "011";
+		String numbers = "17";
+		//String numbers = "011";
 		
 		System.out.println(solution(numbers));
 	}
