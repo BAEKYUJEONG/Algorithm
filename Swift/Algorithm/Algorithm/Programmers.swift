@@ -9,6 +9,16 @@ import Foundation
 
 final class programmers {
     
+    /// 내적
+    func solution_70128(_ a:[Int], _ b:[Int]) -> Int {
+        var answer: Int = 0
+        
+        for i in 0..<a.count {
+            answer += a[i] * b[i]
+        }
+        return answer
+    }
+    
     /// 숫자 문자열과 영단어
     func solution_81301(_ s:String) -> Int {
         let arr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
