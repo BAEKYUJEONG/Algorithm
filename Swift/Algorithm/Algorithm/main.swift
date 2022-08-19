@@ -7,12 +7,7 @@
 
 import Foundation
 
-func solution(_ a:[Int], _ b:[Int]) -> Int {
-    var answer: Int = 0
+func solution(_ k:Int, _ dungeons:[[Int]]) -> Int {
     
-    for i in 0..<a.count {
-        answer += a[i] * b[i]
-    }
-    
-    return answer
+    return -1
 }

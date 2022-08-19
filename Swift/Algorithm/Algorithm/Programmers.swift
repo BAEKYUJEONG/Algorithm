@@ -9,6 +9,21 @@ import Foundation
 
 final class programmers {
     
+    /// 올바른 괄호
+    func solution_12909(_ s: String) -> Bool {
+        var tmp: Int = 0
+        
+        for c in s {
+            (c == "(") ? (tmp += 1) : (tmp -= 1)
+            
+            if tmp < 0 {
+                return false
+            }
+        }
+        
+        return (tmp == 0) ? true : false
+    }
+    
     /// 내적
     func solution_70128(_ a:[Int], _ b:[Int]) -> Int {
         var answer: Int = 0
