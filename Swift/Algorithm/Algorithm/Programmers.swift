@@ -9,9 +9,32 @@ import Foundation
 
 final class programmers {
     
+    /// 다리를 지나는 트럭
+    func solution_42583(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
+        var sec = 0
+        var sumWeight = 0
+        var bridge: [Int] = Array(repeating: 0, count: bridge_length)
+        var trucks: [Int] = truck_weights
+        
+        while !bridge.isEmpty {
+            sec += 1 // 1초가 지났으니
+            sumWeight -= bridge.removeFirst() // 맨 앞의 다리를 다 건너가는 트럭을 sum에서 빼준다.
+            
+            if let truck = trucks.first {
+                if truck + sumWeight <= weight {
+                    sumWeight += trucks.removeFirst()
+                    bridge.append(truck)
+                } else {
+                    bridge.append(0)
+                }
+            }
+        }
+        return sec
+    }
+    
     /// 올바른 괄호
     func solution_12909(_ s: String) -> Bool {
-        var tmp: Int = 0
+        var tmp: Int = 0 
         
         for c in s {
             (c == "(") ? (tmp += 1) : (tmp -= 1)
