@@ -7,10 +7,10 @@
 
 import Foundation
 
-final class programmers {
+final class Programmers {
     
     /// 다리를 지나는 트럭
-    func solution_42583(_ bridge_length:Int, _ weight:Int, _ truck_weights:[Int]) -> Int {
+    func solution_42583(_ bridge_length: Int, _ weight: Int, _ truck_weights: [Int]) -> Int {
         var sec = 0
         var sumWeight = 0
         var bridge: [Int] = Array(repeating: 0, count: bridge_length)
@@ -48,7 +48,7 @@ final class programmers {
     }
     
     /// 내적
-    func solution_70128(_ a:[Int], _ b:[Int]) -> Int {
+    func solution_70128(_ a: [Int], _ b: [Int]) -> Int {
         var answer: Int = 0
         
         for i in 0..<a.count {
@@ -58,7 +58,7 @@ final class programmers {
     }
     
     /// 숫자 문자열과 영단어
-    func solution_81301(_ s:String) -> Int {
+    func solution_81301(_ s: String) -> Int {
         let arr = ["zero", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
         var str = s
         for i in 0..<arr.count {
@@ -68,7 +68,7 @@ final class programmers {
     }
     
     /// 음양 더하기
-    func solution_76501(_ absolutes:[Int], _ signs:[Bool]) -> Int {
+    func solution_76501(_ absolutes: [Int], _ signs: [Bool]) -> Int {
         var answer: Int = 0
         
         for i in 0..<signs.count {
