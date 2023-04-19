@@ -9,6 +9,16 @@ import Foundation
 
 final class BOJ {
     
+    /// 문자열
+    func logic_9086() {
+        let tc: Int = Int(readLine()!)!
+
+        for _ in 1...tc {
+            let input: String = readLine()!
+            print("\(input.first!)\(input.last!)")
+        }
+    }
+    
     /// A+B - 3
     func logic_10950() {
         let tc: Int = Int(readLine()!)!

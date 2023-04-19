@@ -7,11 +7,9 @@
 
 import Foundation
 
-func logic() {
-    let tc: Int = Int(readLine()!)!
-    
-    for _ in 1...tc {
-        let input: [Int] = readLine()!.split(separator: " ").map { Int($0)! }
-        print(input[0] + input[1])
-    }
+let tc: Int = Int(readLine()!)!
+
+for _ in 1...tc {
+    let input: String = readLine()!
+    print("\(input.first!)\(input.last!)")
 }
