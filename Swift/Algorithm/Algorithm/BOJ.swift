@@ -9,6 +9,29 @@ import Foundation
 
 final class BOJ {
     
+    /// 쉽게 푸는 문제
+    func logic_1292() {
+        let input: [Int] = readLine()!.split(separator: " ").map { Int($0)! }
+        var numberArr: [Int] = []
+        var num = 1
+        var answer = 0
+
+        for i in 1...input[1] {
+            for _ in i...i+num-1 {
+                numberArr.append(num)
+            }
+            num += 1
+            
+            if numberArr.count > input[1] { break }
+        }
+
+        for i in input[0]-1...input[1]-1 {
+            answer += numberArr[i]
+        }
+
+        print(answer)
+    }
+    
     /// 문자열
     func logic_9086() {
         let tc: Int = Int(readLine()!)!

@@ -7,9 +7,15 @@
 
 import Foundation
 
-let tc: Int = Int(readLine()!)!
+let input = readLine()!
+var numArr: [Int] = []
 
-for _ in 1...tc {
-    let input: String = readLine()!
-    print("\(input.first!)\(input.last!)")
+for i in input {
+    numArr.append(Int(String(i))!)
+}
+
+numArr.sort(by: >)
+
+for i in numArr {
+    print(i, terminator: "")
 }
