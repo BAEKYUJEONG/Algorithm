@@ -9,6 +9,22 @@ import Foundation
 
 final class BOJ {
     
+    /// 소트인사이드
+    func logic_ASD() {
+        let input = readLine()!
+        var numArr: [Int] = []
+
+        for i in input {
+            numArr.append(Int(String(i))!)
+        }
+
+        numArr.sort(by: >)
+
+        for i in numArr {
+            print(i, terminator: "")
+        }
+    }
+    
     /// 쉽게 푸는 문제
     func logic_1292() {
         let input: [Int] = readLine()!.split(separator: " ").map { Int($0)! }
