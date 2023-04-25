@@ -9,6 +9,22 @@ import Foundation
 
 final class BOJ {
     
+    /// 단어 뒤집기
+    func logic_9093() {
+        let tc = Int(readLine()!)!
+
+        for _ in 1...tc {
+            let strArr: [String] = readLine()!.split(separator: " ").map { String($0) }
+            for string in strArr {
+                let arr = Array(string)
+                for i in arr.reversed() {
+                    print(i, terminator: "")
+                }
+                print(" ", terminator: "")
+            }
+        }
+    }
+    
     /// 방 번호
     func logic_1475() {
         var numArr = [Int](repeating: 0, count: 10)
