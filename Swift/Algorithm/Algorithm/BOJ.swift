@@ -9,8 +9,36 @@ import Foundation
 
 final class BOJ {
     
+    /// 방 번호
+    func logic_1475() {
+        var numArr = [Int](repeating: 0, count: 10)
+        var max = 0
+        var index = 0
+
+        let input = readLine()!
+
+        for i in input {
+            numArr[Int(String(i))!] += 1
+        }
+
+        for i in 0...9 {
+            if max < numArr[i] && i != 6 && i != 9 {
+                max = numArr[i]
+                index = i
+            }
+        }
+
+        let num = Double(numArr[6] + numArr [9]) / Double(2)
+
+        if numArr[index] > Int(ceil(num)) {
+            print(max)
+        } else {
+            print(Int(ceil(num)))
+        }
+    }
+    
     /// 소트인사이드
-    func logic_ASD() {
+    func logic_1427() {
         let input = readLine()!
         var numArr: [Int] = []
 
