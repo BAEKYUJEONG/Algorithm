@@ -9,6 +9,25 @@ import Foundation
 
 final class BOJ {
     
+    /// 접미사 배열
+    func logic_11656() {
+        let str = readLine()!
+        var startIndex: String.Index
+        var answerArr: [String] = []
+
+        for i in 0...str.count - 1 {
+            startIndex = str.index(str.startIndex, offsetBy: i)
+            let range = startIndex...
+            answerArr.append(String(str[range]))
+        }
+
+        answerArr = answerArr.sorted()
+
+        for answer in answerArr {
+            print(answer)
+        }
+    }
+    
     /// 단어 뒤집기
     func logic_9093() {
         let tc = Int(readLine()!)!

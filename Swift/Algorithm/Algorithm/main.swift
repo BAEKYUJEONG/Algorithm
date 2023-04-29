@@ -7,15 +7,18 @@
 
 import Foundation
 
-let tc = Int(readLine()!)!
+let str = readLine()!
+var startIndex: String.Index
+var answerArr: [String] = []
 
-for _ in 1...tc {
-    let strArr: [String] = readLine()!.split(separator: " ").map { String($0) }
-    for string in strArr {
-        let arr = Array(string)
-        for i in arr.reversed() {
-            print(i, terminator: "")
-        }
-        print(" ", terminator: "")
-    }
+for i in 0...str.count - 1 {
+    startIndex = str.index(str.startIndex, offsetBy: i)
+    let range = startIndex...
+    answerArr.append(String(str[range]))
+}
+
+answerArr = answerArr.sorted()
+
+for answer in answerArr {
+    print(answer)
 }
