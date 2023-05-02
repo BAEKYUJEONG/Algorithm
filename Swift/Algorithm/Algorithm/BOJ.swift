@@ -9,6 +9,24 @@ import Foundation
 
 final class BOJ {
     
+    func logic_1920() {
+        let input = Int(readLine()!)!
+        var numSet: Set<Int> = []
+
+        let arr = readLine()!.split(separator: " ").map { numSet.insert(Int($0)!) }
+
+        let tc = Int(readLine()!)!
+        let answerArr = readLine()!.split(separator: " ").map { Int($0)! }
+
+        for answer in answerArr {
+            if numSet.contains(answer) {
+                print(1)
+            } else {
+                print(0)
+            }
+        }
+    }
+    
     /// 슈퍼 마리오
     func logic_2851() {
         var arr: [Int] = []

@@ -7,23 +7,18 @@
 
 import Foundation
 
-var arr: [Int] = []
-var sum = 0
-var isHigherThan100 = false
+let input = Int(readLine()!)!
+var numSet: Set<Int> = []
 
-for _ in 0...9 {
-    arr.append(Int(readLine()!)!)
-}
+let arr = readLine()!.split(separator: " ").map { numSet.insert(Int($0)!) }
 
-for i in 0...9 {
-    sum += arr[i]
-    if sum >= 100 {
-        (sum-100) <= (100-(sum-arr[i])) ? print(sum) : print(sum-arr[i])
-        isHigherThan100 = true
-        break
+let tc = Int(readLine()!)!
+let answerArr = readLine()!.split(separator: " ").map { Int($0)! }
+
+for answer in answerArr {
+    if numSet.contains(answer) {
+        print(1)
+    } else {
+        print(0)
     }
-}
-
-if !isHigherThan100 {
-    print(sum)
 }
