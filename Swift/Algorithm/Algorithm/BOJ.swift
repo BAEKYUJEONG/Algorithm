@@ -9,13 +9,42 @@ import Foundation
 
 final class BOJ {
     
+    /// 오늘도 졌다
+    func logic_14582() {
+        let myTeamArr = readLine()!.split(separator: " ").map { Int($0)! }
+        let yourTeamArr = readLine()!.split(separator: " ").map { Int($0)! }
+
+        var mySum = 0
+        var yourSum = 0
+        var isWin = false
+
+        for i in 0...8 {
+            mySum += myTeamArr[i]
+            if mySum > yourSum {
+                isWin = true
+            }
+            yourSum += yourTeamArr[i]
+        }
+
+        if mySum >= yourSum {
+            print("No")
+        } else {
+            if isWin {
+                print("Yes")
+            } else {
+                print("No")
+            }
+        }
+    }
+    
+    /// 수 찾기
     func logic_1920() {
-        let input = Int(readLine()!)!
+        _ = Int(readLine()!)!
         var numSet: Set<Int> = []
 
-        let arr = readLine()!.split(separator: " ").map { numSet.insert(Int($0)!) }
+        _ = readLine()!.split(separator: " ").map { numSet.insert(Int($0)!) }
 
-        let tc = Int(readLine()!)!
+        _ = Int(readLine()!)!
         let answerArr = readLine()!.split(separator: " ").map { Int($0)! }
 
         for answer in answerArr {

@@ -7,18 +7,27 @@
 
 import Foundation
 
-let input = Int(readLine()!)!
-var numSet: Set<Int> = []
+let myTeamArr = readLine()!.split(separator: " ").map { Int($0)! }
+let yourTeamArr = readLine()!.split(separator: " ").map { Int($0)! }
 
-let arr = readLine()!.split(separator: " ").map { numSet.insert(Int($0)!) }
+var mySum = 0
+var yourSum = 0
+var isWin = false
 
-let tc = Int(readLine()!)!
-let answerArr = readLine()!.split(separator: " ").map { Int($0)! }
+for i in 0...8 {
+    mySum += myTeamArr[i]
+    if mySum > yourSum {
+        isWin = true
+    }
+    yourSum += yourTeamArr[i]
+}
 
-for answer in answerArr {
-    if numSet.contains(answer) {
-        print(1)
+if mySum >= yourSum {
+    print("No")
+} else {
+    if isWin {
+        print("Yes")
     } else {
-        print(0)
+        print("No")
     }
 }
