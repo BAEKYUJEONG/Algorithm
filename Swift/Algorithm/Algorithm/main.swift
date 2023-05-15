@@ -7,27 +7,58 @@
 
 import Foundation
 
-let myTeamArr = readLine()!.split(separator: " ").map { Int($0)! }
-let yourTeamArr = readLine()!.split(separator: " ").map { Int($0)! }
+let input = Int(readLine()!)!
+let wordArr = readLine()!.sorted()
+var sum = 0
 
-var mySum = 0
-var yourSum = 0
-var isWin = false
-
-for i in 0...8 {
-    mySum += myTeamArr[i]
-    if mySum > yourSum {
-        isWin = true
+for _ in 1...input-1 {
+    var sameArr = wordArr
+    var similarArr = readLine()!.sorted()
+    
+    if wordArr == similarArr {
+        sum += 1
+        continue
+    } else if similarArr.count > wordArr.count + 1 ||  similarArr.count < wordArr.count - 1 {
+        continue
     }
-    yourSum += yourTeamArr[i]
-}
-
-if mySum >= yourSum {
-    print("No")
-} else {
-    if isWin {
-        print("Yes")
+    
+    if similarArr.count == wordArr.count - 1 { /// 1개 적을 때
+        var same = 0
+        for i in 0...similarArr.count-1 {
+            for j in 0...sameArr.count-1 {
+                if sameArr[j] == similarArr[i] {
+                    same += 1
+                    sameArr[j] = " "
+                    similarArr[i] = " "
+                }
+            }
+        }
+        
+        if same == similarArr.count {
+            sum += 1
+        }
     } else {
-        print("No")
+        var same = 0
+        for i in 0...similarArr.count-1 {
+            for j in 0...sameArr.count-1 {
+                if sameArr[j] == similarArr[i] {
+                    same += 1
+                    sameArr[j] = " "
+                    similarArr[i] = " "
+                }
+            }
+        }
+        
+        if similarArr.count == wordArr.count { /// 같을 때
+            if same >= wordArr.count - 1 {
+                sum += 1
+            }
+        } else { /// 1개 많을 때
+            if same >= wordArr.count {
+                sum += 1
+            }
+        }
     }
 }
+
+print(sum)
