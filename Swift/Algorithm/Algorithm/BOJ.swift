@@ -9,6 +9,45 @@ import Foundation
 
 final class BOJ {
     
+    /// 카드2
+    func logic_2164() {
+        let input = Int(readLine()!)!
+
+        var queue = Queue<Int>()
+
+        for i in 1...input {
+            queue.enqueue(i)
+        }
+
+        while queue.count != 1 {
+            _ = queue.dequeue()
+            let pop = queue.dequeue()
+            queue.enqueue(pop!)
+        }
+
+        print(queue.dequeue()!)
+
+        struct Queue<T> {
+            private var queue: [T] = []
+            
+            public var count: Int {
+                return queue.count
+            }
+            
+            public var isEmpty: Bool {
+                return queue.isEmpty
+            }
+            
+            public mutating func enqueue(_ element: T) {
+                queue.append(element)
+            }
+            
+            public mutating func dequeue() -> T? {
+                return isEmpty ? nil : queue.removeFirst()
+            }
+        }
+    }
+    
     /// 비슷한 단어
     func logic_2607() {
         let input = Int(readLine()!)!
