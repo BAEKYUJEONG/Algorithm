@@ -7,52 +7,23 @@
 
 import Foundation
 
-let N = Int(readLine()!)!
-var cubeArr = readLine()!.split(separator: " ").map{ Int($0)! }
-var answer = 0
-var sideArr = [5,4,3,2,1,0]
+/// 남은 자리 중에 자기가 가진 인덱스 만큼 떨어져 앉으면 자신의 자리
 
-if N == 1 {
-    cubeArr.sort()
-    for i in 0...cubeArr.count-2 {
-        answer += cubeArr[i]
-    }
-} else {
-    var min = 50
-    var minTwo = 50
-    var minThree = 50
-    var minIndex = 0
-    var minTwoIndex = 0
+let N = Int(readLine()!)!
+let heightArr = readLine()!.split(separator: " ").map{ Int($0)! }
+var answerArr = [Int](repeating: 0, count: N)
+
+for i in 0...N-1 {
+    var target = heightArr[i]
     
-    for i in 0...cubeArr.count-1 {
-        if min > cubeArr[i] {
-            min = cubeArr[i]
-            minIndex = i
+    for j in 0...N-1 {
+        if answerArr[j] == 0 {
+            if target == 0 {
+                answerArr[j] = i+1
+            }
+            target -= 1
         }
     }
-    
-    let one = ((N-2)*(N-2) + (N-2)*(N-1)*4) * min
-    
-    for i in 0...cubeArr.count-1 {
-        if i == minIndex || i == sideArr[minIndex] { continue }
-        if minTwo > cubeArr[i] {
-            minTwo = cubeArr[i]
-            minTwoIndex = i
-        }
-    }
-    
-    let two = ((N-1)*4 + (N-2)*4) * (min + minTwo)
-    
-    for i in 0...cubeArr.count-1 {
-        if i == minIndex || i == sideArr[minIndex] || i == minTwoIndex || i == sideArr[minTwoIndex] { continue }
-        if minThree > cubeArr[i] {
-            minThree = cubeArr[i]
-        }
-    }
-    
-    let three = 4 * (min + minTwo + minThree)
-    
-    answer = one + two + three
 }
 
-print(answer)
+answerArr.forEach{ print($0, terminator: " ") }

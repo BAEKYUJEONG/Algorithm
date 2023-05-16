@@ -9,12 +9,35 @@ import Foundation
 
 final class BOJ {
     
+    /// 한 줄로 서기
+    func logic_1138() {
+        /// 남은 자리 중에 자기가 가진 인덱스 만큼 떨어져 앉으면 자신의 자리
+        let N = Int(readLine()!)!
+        let heightArr = readLine()!.split(separator: " ").map{ Int($0)! }
+        var answerArr = [Int](repeating: 0, count: N)
+
+        for i in 0...N-1 {
+            var target = heightArr[i]
+            
+            for j in 0...N-1 {
+                if answerArr[j] == 0 {
+                    if target == 0 {
+                        answerArr[j] = i+1
+                    }
+                    target -= 1
+                }
+            }
+        }
+
+        answerArr.forEach{ print($0, terminator: " ") }
+    }
+    
     /// 주사위
     func logic_1041() {
         let N = Int(readLine()!)!
         var cubeArr = readLine()!.split(separator: " ").map{ Int($0)! }
         var answer = 0
-        var sideArr = [5,4,3,2,1,0]
+        let sideArr = [5,4,3,2,1,0]
 
         if N == 1 {
             cubeArr.sort()
@@ -35,6 +58,7 @@ final class BOJ {
                 }
             }
             
+            /// 1면 보이는 갯수
             let one = ((N-2)*(N-2) + (N-2)*(N-1)*4) * min
             
             for i in 0...cubeArr.count-1 {
@@ -45,6 +69,7 @@ final class BOJ {
                 }
             }
             
+            /// 2면 보이는 갯수
             let two = ((N-1)*4 + (N-2)*4) * (min + minTwo)
             
             for i in 0...cubeArr.count-1 {
@@ -54,6 +79,7 @@ final class BOJ {
                 }
             }
             
+            /// 3면 보이는 갯수
             let three = 4 * (min + minTwo + minThree)
             
             answer = one + two + three
