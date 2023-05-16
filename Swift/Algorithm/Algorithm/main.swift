@@ -7,58 +7,52 @@
 
 import Foundation
 
-let input = Int(readLine()!)!
-let wordArr = readLine()!.sorted()
-var sum = 0
+let N = Int(readLine()!)!
+var cubeArr = readLine()!.split(separator: " ").map{ Int($0)! }
+var answer = 0
+var sideArr = [5,4,3,2,1,0]
 
-for _ in 1...input-1 {
-    var sameArr = wordArr
-    var similarArr = readLine()!.sorted()
+if N == 1 {
+    cubeArr.sort()
+    for i in 0...cubeArr.count-2 {
+        answer += cubeArr[i]
+    }
+} else {
+    var min = 50
+    var minTwo = 50
+    var minThree = 50
+    var minIndex = 0
+    var minTwoIndex = 0
     
-    if wordArr == similarArr {
-        sum += 1
-        continue
-    } else if similarArr.count > wordArr.count + 1 ||  similarArr.count < wordArr.count - 1 {
-        continue
+    for i in 0...cubeArr.count-1 {
+        if min > cubeArr[i] {
+            min = cubeArr[i]
+            minIndex = i
+        }
     }
     
-    if similarArr.count == wordArr.count - 1 { /// 1개 적을 때
-        var same = 0
-        for i in 0...similarArr.count-1 {
-            for j in 0...sameArr.count-1 {
-                if sameArr[j] == similarArr[i] {
-                    same += 1
-                    sameArr[j] = " "
-                    similarArr[i] = " "
-                }
-            }
-        }
-        
-        if same == similarArr.count {
-            sum += 1
-        }
-    } else {
-        var same = 0
-        for i in 0...similarArr.count-1 {
-            for j in 0...sameArr.count-1 {
-                if sameArr[j] == similarArr[i] {
-                    same += 1
-                    sameArr[j] = " "
-                    similarArr[i] = " "
-                }
-            }
-        }
-        
-        if similarArr.count == wordArr.count { /// 같을 때
-            if same >= wordArr.count - 1 {
-                sum += 1
-            }
-        } else { /// 1개 많을 때
-            if same >= wordArr.count {
-                sum += 1
-            }
+    let one = ((N-2)*(N-2) + (N-2)*(N-1)*4) * min
+    
+    for i in 0...cubeArr.count-1 {
+        if i == minIndex || i == sideArr[minIndex] { continue }
+        if minTwo > cubeArr[i] {
+            minTwo = cubeArr[i]
+            minTwoIndex = i
         }
     }
+    
+    let two = ((N-1)*4 + (N-2)*4) * (min + minTwo)
+    
+    for i in 0...cubeArr.count-1 {
+        if i == minIndex || i == sideArr[minIndex] || i == minTwoIndex || i == sideArr[minTwoIndex] { continue }
+        if minThree > cubeArr[i] {
+            minThree = cubeArr[i]
+        }
+    }
+    
+    let three = 4 * (min + minTwo + minThree)
+    
+    answer = one + two + three
 }
 
-print(sum)
+print(answer)
