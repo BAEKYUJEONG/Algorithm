@@ -9,6 +9,37 @@ import Foundation
 
 final class BOJ {
     
+    /// 생태학
+    func logic_4358() {
+        var treeDictionary: [String: Int] = [:]
+        var totalCnt = 0
+
+        while true {
+            if let tree = readLine() {
+                if treeDictionary.keys.contains(tree) {
+                    treeDictionary.updateValue(treeDictionary[tree]! + 1, forKey: tree)
+                } else {
+                    treeDictionary[tree] = 1
+                }
+                totalCnt += 1
+            } else {
+                break
+            }
+        }
+
+        let sortedDictionary = treeDictionary.sorted { $0.0 < $1.0 }
+
+        for treeItem in sortedDictionary {
+            print(treeItem.key, getPercentage(value: Double(treeItem.value), total: Double(totalCnt)))
+        }
+
+        func getPercentage(value: Double, total: Double) -> String {
+            let percent = value/total * 100
+            let roundPercent = round(percent * 10000) / 10000
+            return String(format: "%.4f", roundPercent)
+        }
+    }
+    
     /// 한 줄로 서기
     func logic_1138() {
         /// 남은 자리 중에 자기가 가진 인덱스 만큼 떨어져 앉으면 자신의 자리
