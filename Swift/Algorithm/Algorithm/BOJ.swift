@@ -119,7 +119,7 @@ final class BOJ {
         print(answer)
 
     }
-    
+
     /// 카드2
     func logic_2164() {
         let input = Int(readLine()!)!
@@ -504,5 +504,49 @@ final class BOJ {
         print(((a%c)+(b%c))%c)
         print((a*b)%c)
         print(((a%c)*(b%c))%c)
+    }
+    
+    /// 체스판 칠하기
+    func logic_1018() {
+        let input: [Int] = readLine()!.split(separator: " ").map { Int($0)! }
+        let m = input[0]
+        let n = input[1]
+        var chessArr: [[Character]] = []
+
+        for _ in 0..<m {
+            chessArr.append(readLine()!.map{ $0 })
+        }
+
+        var answer = 64
+
+        for i in 0...m-8 {
+            for j in 0...n-8 {
+                var change1 = 0
+                var change2 = 0
+                
+                for col in i..<i+8 {
+                    for row in j..<j+8 {
+                        
+                        if (col + row) % 2 == 0 {
+                            if chessArr[col][row] == "B" {
+                                change1 += 1
+                            } else {
+                                change2 += 1
+                            }
+                        } else {
+                            if chessArr[col][row] == "B" {
+                                change2 += 1
+                            } else {
+                                change1 += 1
+                            }
+                        }
+                        
+                    }
+                }
+                
+                answer = min(answer, change1, change2)
+            }
+        }
+        print(answer)
     }
 }
