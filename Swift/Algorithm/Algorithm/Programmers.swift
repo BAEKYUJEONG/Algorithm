@@ -76,4 +76,30 @@ final class Programmers {
         }
         return answer
     }
+    
+    /// 문자열 내림차순으로 배치하기
+    func solution_12917(_ s:String) -> String {
+        return String(s.sorted(by: >))
+    }
+    
+    /// 택배 상자 꺼내기
+    func solution(_ n: Int, _ w: Int, _ num: Int) -> Int {
+        var floor = (num - 1) / w
+        var answer = 1
+        var box = num
+
+        while box < n {
+            print(box)
+            
+            floor += 1
+            answer += 1
+            box = (2 * w) * floor + 1 - box
+        }
+
+        if box > n {
+            answer -= 1
+        }
+
+        return answer
+    }
 }
