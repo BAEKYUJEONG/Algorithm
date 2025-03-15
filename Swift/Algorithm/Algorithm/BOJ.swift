@@ -506,7 +506,7 @@ final class BOJ {
         print(((a%c)*(b%c))%c)
     }
     
-    /// 체스판 칠하기
+    /// 체스판 다시  칠하기
     func logic_1018() {
         let input: [Int] = readLine()!.split(separator: " ").map { Int($0)! }
         let m = input[0]
@@ -548,5 +548,21 @@ final class BOJ {
             }
         }
         print(answer)
+    }
+    
+    /// 모음의 개수
+    func logic_1264() {
+        while let input = readLine(), input != "#" {
+            let arr: [String] = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+            let inputArr = Array(input).map { String($0) }
+            var count = 0
+
+            for element in inputArr {
+                if arr.contains(element) {
+                    count += 1
+                }
+            }
+            print(count)
+        }
     }
 }
