@@ -583,4 +583,23 @@ final class BOJ {
             print($0, terminator: " ")
         }
     }
+    
+    /// 로프
+    func logic_2217() {
+        let num = Int(readLine()!)!
+        var arr = [Int]()
+        var answer = 0
+
+        for _ in 1...num {
+            arr.append(Int(readLine()!)!)
+        }
+
+        arr.sort()
+
+        for i in 0..<num {
+            answer = (num - i) * arr[i] > answer ? (num - i) * arr[i] : answer
+        }
+
+        print(answer)
+    }
 }
