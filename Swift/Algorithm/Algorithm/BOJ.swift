@@ -565,4 +565,22 @@ final class BOJ {
             print(count)
         }
     }
+    
+    /// 알파벳 찾기
+    func logic_10809() {
+        let s = readLine()!
+        var arr = [Int](0...26)
+        var resultArr = [Int](repeating: -1, count: 26)
+        var stringArr = s.map { Int($0.asciiValue!) - 97 } // 입력 받은 string을 asciiValue Int로 arr에 저장 (a인 97을 빼서 0을 기준으로 만듦) ex) 2 1 3 5 (c b d f)
+
+        for i in arr { // 0부터 26까지 순회
+            if stringArr.contains(arr[i]) { // a부터 순서대로 있는지 확인 (만약에 그 해당하는 알파벳이 있으면)
+                resultArr[i] = stringArr.firstIndex(of: arr[i])! // 맨 처음에 나오는 위치 확인
+            }
+        }
+
+        resultArr.forEach {
+            print($0, terminator: " ")
+        }
+    }
 }
