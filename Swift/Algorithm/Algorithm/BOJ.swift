@@ -602,4 +602,28 @@ final class BOJ {
 
         print(answer)
     }
+    
+    /// 학생 번호
+    func logic_1235() {
+        let num = Int(readLine()!)!
+        var arr = [String]()
+        var set: Set<String> = []
+
+        for _ in 1...num {
+            arr.append(readLine()!)
+        }
+
+        for n in 1...arr[0].count {
+            for i in 0..<num {
+                set.insert(String(arr[i].suffix(n)))
+            }
+            
+            if set.count == num {
+                print(n)
+                break
+            } else {
+                set.removeAll()
+            }
+        }
+    }
 }
