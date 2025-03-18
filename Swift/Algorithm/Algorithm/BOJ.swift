@@ -626,4 +626,30 @@ final class BOJ {
             }
         }
     }
+    
+    /// 국영수
+    func logic_10825() {
+        let num = Int(readLine()!)!
+        var items = [(Int, Int, Int, String)]()
+
+        for _ in 0..<num {
+            let input = readLine()!.split(separator: " ").map { String($0) }
+            if let korean = Int(input[1]),
+               let eng = Int(input[2]),
+               let math = Int(input[3]) {
+                items.append((korean, eng, math, input[0]))
+            }
+        }
+        
+        let sortedItems = items.sorted {
+            if $0.0 != $1.0 { return $0.0 > $1.0 } // 국어 내림차순
+            else if $0.1 != $1.1 { return $0.1 < $1.1 } // 영어 오름차순
+            else if $0.2 != $1.2 { return $0.2 > $1.2 } // 수학 내림차순
+            else { return $0.3 < $1.3 } // 이름 사전순
+        }
+
+        for item in sortedItems {
+            print(item.3)
+        }
+    }
 }
