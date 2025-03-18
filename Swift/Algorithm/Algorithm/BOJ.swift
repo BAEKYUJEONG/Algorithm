@@ -652,4 +652,24 @@ final class BOJ {
             print(item.3)
         }
     }
+    
+    /// 좌표 정렬하기
+    func logic_11650() {
+        let num = Int(readLine()!)!
+        var arr = [(Int, Int)]()
+        
+        for _ in 0..<num {
+            let input = readLine()!.split(separator: " ").map{ Int($0)! }
+            arr.append((input[0], input[1]))
+        }
+        
+        arr.sort {
+            if $0.0 != $1.0 { return $0.0 < $1.0 }
+            else { return $0.1 < $1.1 }
+        }
+        
+        for item in arr {
+            print(item.0, " ", item.1)
+        }
+    }
 }
