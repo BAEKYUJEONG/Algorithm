@@ -83,7 +83,7 @@ final class Programmers {
     }
     
     /// 택배 상자 꺼내기
-    func solution(_ n: Int, _ w: Int, _ num: Int) -> Int {
+    func solution_389478(_ n: Int, _ w: Int, _ num: Int) -> Int {
         var floor = (num - 1) / w
         var answer = 1
         var box = num
@@ -100,6 +100,34 @@ final class Programmers {
             answer -= 1
         }
 
+        return answer
+    }
+    
+    /// 귤 고르기
+    func solution_138476(_ k:Int, _ tangerine:[Int]) -> Int {
+        var dictionary: [Int : Int] = [ : ]
+        var answer = 0
+        var n = k
+        
+        for size in tangerine {
+            if let value = dictionary[size] {
+                dictionary[size] = value + 1
+            } else {
+                dictionary[size] = 1
+            }
+        }
+        
+        let sortedArray = dictionary.sorted { $0.value > $1.value }
+        
+        for (key, value) in sortedArray {
+            if n > 0 {
+                n = n - value
+                answer += 1
+            } else {
+                break
+            }
+        }
+        
         return answer
     }
 }
