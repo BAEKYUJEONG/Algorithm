@@ -569,9 +569,9 @@ final class BOJ {
     /// 알파벳 찾기
     func logic_10809() {
         let s = readLine()!
-        var arr = [Int](0...26)
+        let arr = [Int](0...26)
         var resultArr = [Int](repeating: -1, count: 26)
-        var stringArr = s.map { Int($0.asciiValue!) - 97 } // 입력 받은 string을 asciiValue Int로 arr에 저장 (a인 97을 빼서 0을 기준으로 만듦) ex) 2 1 3 5 (c b d f)
+        let stringArr = s.map { Int($0.asciiValue!) - 97 } // 입력 받은 string을 asciiValue Int로 arr에 저장 (a인 97을 빼서 0을 기준으로 만듦) ex) 2 1 3 5 (c b d f)
 
         for i in arr { // 0부터 26까지 순회
             if stringArr.contains(arr[i]) { // a부터 순서대로 있는지 확인 (만약에 그 해당하는 알파벳이 있으면)
@@ -671,5 +671,52 @@ final class BOJ {
         for item in arr {
             print(item.0, " ", item.1)
         }
+    }
+    
+    /// 통계학
+    func logic_2108() {
+        let num = Int(readLine()!)!
+        var sum = 0
+        var arr = [Int]()
+        var dictionary: [Int: Int] = [:]
+
+        for _ in 0..<num {
+            let input = Int(readLine()!)!
+            sum += input
+            arr.append(input)
+            if dictionary.keys.contains(input) {
+                dictionary.updateValue(dictionary[input]! + 1, forKey: input)
+            } else {
+                dictionary[input] = 1
+            }
+        }
+
+        arr.sort()
+        let dicArr = dictionary.sorted { $0.value > $1.value }.map { ($0.key, $0.value) }
+
+        var maxCountArr = [(Int, Int)]()
+        maxCountArr.append(dicArr[0])
+
+        for item in dicArr {
+            if maxCountArr[0].0 != item.0 {
+                if maxCountArr[0].1 == item.1 {
+                    maxCountArr.append(item)
+                } else {
+                    break
+                }
+            }
+        }
+
+        print(Int(round(Double(sum) / Double(num))))
+        print(arr[num/2])
+
+        if maxCountArr.count == 1 {
+            print(maxCountArr[0].0)
+        } else {
+            maxCountArr.sort { $0.0 < $1.0 }
+            print(maxCountArr[1].0)
+        }
+
+        print(arr[num-1] - arr[0])
     }
 }
