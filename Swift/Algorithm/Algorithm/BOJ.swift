@@ -719,4 +719,33 @@ final class BOJ {
 
         print(arr[num-1] - arr[0])
     }
+    
+    /// 시리얼 번호
+    func logic_1431() {
+        let num = Int(readLine()!)!
+        var arr = [String]()
+
+        for _ in 0..<num {
+            arr.append(String(readLine()!))
+        }
+
+        arr.sort {
+            if $0.count != $1.count {
+                return $0.count < $1.count
+            } else {
+                let sum1 = $0.compactMap { $0.wholeNumberValue }.reduce(0, +)
+                let sum2 = $1.compactMap { $0.wholeNumberValue }.reduce(0, +)
+                
+                if sum1 != sum2 {
+                    return sum1 < sum2
+                } else {
+                    return $0 < $1
+                }
+            }
+        }
+
+        arr.forEach { item in
+            print(item)
+        }
+    }
 }
