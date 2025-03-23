@@ -759,4 +759,11 @@ final class BOJ {
         }
         print(array.sorted().map { String($0) }.joined(separator: "\n"))
     }
+    
+    /// 문자와 문자열
+    func logic_27866() {
+        let s = readLine()!
+        let i = Int(readLine()!)! - 1
+        print(s[s.index(s.startIndex, offsetBy: i)])
+    }
 }
