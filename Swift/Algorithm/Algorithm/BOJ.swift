@@ -766,4 +766,17 @@ final class BOJ {
         let i = Int(readLine()!)! - 1
         print(s[s.index(s.startIndex, offsetBy: i)])
     }
+    
+    /// 새싹
+    func logic_25083() {
+        let str = """
+         ,r'"7
+r`-_   ,'  ,/
+ \\. ". L_r'
+   `~\\/
+      |
+      |
+"""
+        print(str)
+    }
 }
