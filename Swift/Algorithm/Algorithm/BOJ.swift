@@ -779,4 +779,22 @@ r`-_   ,'  ,/
 """
         print(str)
     }
+    
+    /// 요세푸스 순열
+    func logic_11866() {
+        let input = readLine()!.split(separator: " ").map{ Int(String($0))! }
+        let n = input[0]
+        let k = input[1]
+        
+        var arr = Array(1...n)
+        var result = [Int]()
+        var index = 0
+        
+        while !arr.isEmpty {
+            index = (index + k - 1) % arr.count
+            result.append(arr.remove(at: index))
+        }
+        
+        print("<\(result.map{ String($0) }.joined(separator: ", "))>")
+    }
 }
