@@ -753,7 +753,6 @@ final class BOJ {
     func logic_2751() {
         let n = Int(readLine()!)!
         var array: [Int] = []
-        var answer = ""
         for _ in 0..<n {
             array.append(Int(readLine()!)!)
         }
@@ -796,5 +795,16 @@ r`-_   ,'  ,/
         }
         
         print("<\(result.map{ String($0) }.joined(separator: ", "))>")
+    }
+    
+    /// 세로 읽기
+    func logic_10798() {
+        var arr = Array(repeating: "", count: 15)
+        for _ in 0..<5 {
+            readLine()!.enumerated().forEach {
+                arr[$0.offset].append($0.element)
+            }
+        }
+        print(arr.joined())
     }
 }
