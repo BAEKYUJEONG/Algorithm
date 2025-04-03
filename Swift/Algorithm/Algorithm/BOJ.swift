@@ -807,4 +807,30 @@ r`-_   ,'  ,/
         }
         print(arr.joined())
     }
+    
+    /// 짐 챙기는 숌
+    func logic_1817() {
+        let input = readLine()!.split(separator: " ").map { Int(String($0))! }
+        let n = input[0]
+        let m = input[1]
+
+        if n == 0 {
+            print(0)
+        } else {
+            let books = readLine()!.split(separator: " ").map { Int(String($0))! }
+            var box = 0
+            var count = 1
+            
+            for book in books {
+                box += book
+                
+                if box > m {
+                    count += 1
+                    box = book
+                }
+            }
+            
+            print(count)
+        }
+    }
 }
