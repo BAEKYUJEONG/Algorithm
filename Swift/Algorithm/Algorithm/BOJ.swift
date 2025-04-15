@@ -833,4 +833,26 @@ r`-_   ,'  ,/
             print(count)
         }
     }
+    
+    /// 카드 1
+    func logic_2161() {
+        let input = Int(readLine()!)!
+        var array = Array(1...input)
+        var flag = true
+        var answer = [Int]()
+
+        while !array.isEmpty {
+            if flag {
+                let first = array.removeFirst()
+                answer.append(first)
+            } else {
+                let first = array.removeFirst()
+                array.append(first)
+            }
+            
+            flag = !flag
+        }
+
+        print(answer.map { "\($0)" }.joined(separator: " "))
+    }
 }
